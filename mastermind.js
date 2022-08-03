@@ -14,7 +14,7 @@
  * checkGuess('1532, '1234')
  * // returns '2-1'
  * // two numbers in the correct place (1 and 3)
- * // and one correct number in the incorrect place (2)
+ * // and one correct number in the incorrect place (2) 
  *
  */
 function checkGuess(guess, solution) {
@@ -32,7 +32,22 @@ function checkGuess(guess, solution) {
   // characters not in the right place"
   // for example, "2-1"
   //
+  let correct = 0;
+  let incorrect = 0;
+  for (let i = 0; i < guess.length; i++) {
+    if (guess[i] === solution[i]) {
+      correct++;
+    } else if (solution.includes(guess[i])) {
+      incorrect++;
+    }
+
+  }
+  return `${correct}-${incorrect}`;
 }
+
+  
+  
+
 
 // https://jsdoc.app
 /**
