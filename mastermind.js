@@ -18,31 +18,22 @@
  *
  */
 function checkGuess(guess, solution) {
-  // TODO: complete this function
-  // first determine how many characters total the two strings have in common
-  // This may help:
-  // https://github.com/bonnie/udemy-ENZYME/blob/master/context-base/src/helpers/index.js
-  //
-  // then determine how many of those characters are in the right place
-  // hint: iterate through characters of guess and compare to character
-  // in the same position in solution
-  //
-  // finally, return a string in the format
+
+  // Returns a string in the format
   // "count of correct characters in the right place"-"count of correct
   // characters not in the right place"
   // for example, "2-1"
-  //
-  let correct = 0;
-  let incorrect = 0;
-  for (let i = 0; i < guess.length; i++) {
-    if (guess[i] === solution[i]) {
-      correct++;
-    } else if (solution.includes(guess[i])) {
-      incorrect++;
-    }
 
-  }
-  return `${correct}-${incorrect}`;
+    let correct = 0;
+    let incorrect = 0;
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] === solution[i]) {
+        correct++;
+      } else if (solution.includes(guess[i])) {
+        incorrect++;
+      }
+    }
+    return `${correct}-${incorrect}`;
 }
 
   
@@ -74,12 +65,12 @@ function processInput(solution, guesses) {
 // ----------- main program ------- //
 // process arguments via destructuring
 //
-const [solution, guessCount, ...guesses] = process.argv.slice(2);
+const [solution, numberOfGuesses, ...guesses] = process.argv.slice(2);
 
 // (lightly) verify the input
-if (guesses.length !== Number(guessCount)) {
+if (guesses.length !== Number(numberOfGuesses)) {
   console.warn(
-    `The number of guesses provided (${guesses.length}) does not match the guess count (${guessCount}).`
+    `The number of guesses provided (${guesses.length}) does not match the guess count (${numberOfGuesses}).`
   );
   console.warn("Exiting.");
   process.exit(-1);
